@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>今日のチャクラ｜8つのエネルギーからの今日のひとこと</title>
+<meta name="description" content="8つのチャクラから届く、今日のひとこと。やさしい全肯定のチャクラだより。">
+<style>
+  :root{
+    --bg1:#f7f2ee; --bg2:#efe6f2;
+    --ink:#4a3f4c; --ink-soft:#8a7d8d;
+    --card:#fffdfb; --line:#e8dde4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:"Hiragino Mincho ProN","Yu Mincho","BIZ UDMincho",serif;
+    background:linear-gradient(170deg,var(--bg1) 0%,var(--bg2) 100%);
+    color:var(--ink); min-height:100vh; line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:520px;margin:0 auto;padding:34px 20px 60px;}
+
+  /* ---- header ---- */
+  header{text-align:center;margin-bottom:30px;}
+  .lotus{font-size:26px;letter-spacing:6px;color:#b79cc6;}
+  h1{font-size:26px;font-weight:600;letter-spacing:.14em;margin:8px 0 4px;}
+  .subtitle{font-size:12.5px;color:var(--ink-soft);letter-spacing:.08em;}
+  .today{margin-top:14px;display:inline-block;background:var(--card);
+    border:1px solid #e6dbe8;border-radius:999px;padding:6px 22px;
+    font-size:13.5px;letter-spacing:.1em;color:#6d5f70;}
+
+  /* ---- section ---- */
+  section{margin-bottom:34px;}
+  .sec-title{font-size:15px;letter-spacing:.18em;text-align:center;color:#7c6a80;margin-bottom:16px;}
+  .sec-title::before,.sec-title::after{content:"・";color:#c9b6d3;margin:0 8px;}
+
+  /* ---- ranking ---- */
+  .rank-card{background:var(--card);border:1px solid #eee2ea;border-radius:18px;
+    padding:16px 18px;margin-bottom:12px;display:flex;align-items:center;gap:14px;
+    box-shadow:0 2px 10px rgba(120,90,130,.06);}
+  .rank-no{font-size:12px;color:#a793ab;letter-spacing:.08em;min-width:38px;text-align:center;line-height:1.4;}
+  .rank-no strong{display:block;font-size:21px;color:#7c6a80;}
+  .rank-dot{width:38px;height:38px;border-radius:50%;flex-shrink:0;
+    box-shadow:inset 0 -3px 6px rgba(0,0,0,.12), 0 0 0 4px rgba(255,255,255,.7);}
+  .rank-body{flex:1;}
+  .rank-name{font-size:14.5px;font-weight:600;letter-spacing:.05em;}
+  .rank-text{font-size:12.5px;color:var(--ink-soft);margin-top:2px;}
+
+  /* ---- chakra chips ---- */
+  .chips{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+  .chip{background:var(--card);border:1px solid #eee2ea;border-radius:16px;
+    padding:12px 4px 10px;text-align:center;cursor:pointer;transition:.2s;
+    font-family:inherit;}
+  .chip:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(120,90,130,.12);}
+  .chip.active{border-color:#c9a9d6;box-shadow:0 4px 14px rgba(150,100,170,.18);}
+  .chip .c-dot{width:30px;height:30px;border-radius:50%;margin:0 auto 6px;
+    box-shadow:inset 0 -3px 6px rgba(0,0,0,.12);}
+  .chip .c-num{font-size:11px;color:#a793ab;letter-spacing:.05em;}
+  .chip .c-name{font-size:11.5px;color:var(--ink);margin-top:1px;letter-spacing:.02em;}
+  .chip .c-my{font-size:10px;color:#c98bb0;display:none;}
+  .chip.is-my .c-my{display:block;}
+  .hint{font-size:12px;color:var(--ink-soft);text-align:center;margin-top:12px;letter-spacing:.04em;}
+
+  /* ---- detail ---- */
+  #detail{display:none;}
+  .d-card{background:var(--card);border-radius:22px;overflow:hidden;
+    border:1px solid #eee2ea;box-shadow:0 6px 24px rgba(120,90,130,.10);}
+  .d-head{padding:26px 24px 20px;text-align:center;color:#fff;position:relative;}
+  .d-head .d-alias{font-size:11.5px;opacity:.9;letter-spacing:.14em;}
+  .d-head h2{font-size:22px;font-weight:600;letter-spacing:.1em;margin:4px 0 2px;}
+  .d-head .d-sanskrit{font-size:12px;opacity:.85;letter-spacing:.1em;}
+  .d-head .d-place{display:inline-block;margin-top:10px;font-size:11.5px;
+    background:rgba(255,255,255,.22);border-radius:999px;padding:3px 14px;letter-spacing:.06em;}
+  .d-body{padding:24px 22px 26px;}
+  .d-keywords{text-align:center;font-size:12px;color:var(--ink-soft);letter-spacing:.1em;margin-bottom:18px;}
+  .d-msg-label{font-size:12.5px;letter-spacing:.16em;color:#a084a8;text-align:center;margin-bottom:10px;}
+  .d-msg{font-size:15.5px;line-height:2.15;background:#faf6f2;border-radius:14px;
+    padding:18px 18px;letter-spacing:.02em;}
+  .d-sub{margin-top:22px;}
+  .d-sub h3{font-size:13px;letter-spacing:.14em;color:#7c6a80;margin-bottom:10px;text-align:center;}
+  .sign-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12px;}
+  .sign-box{background:#faf6f2;border-radius:12px;padding:12px 12px;}
+  .sign-box b{display:block;font-size:11.5px;color:#a084a8;margin-bottom:6px;letter-spacing:.08em;font-weight:600;}
+  .sign-box ul{list-style:none;}
+  .sign-box li{padding-left:1em;text-indent:-1em;color:#6d5f70;line-height:1.8;}
+  .sign-box li::before{content:"・";color:#c9b6d3;}
+  .care-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .care{background:#faf6f2;border-radius:12px;padding:12px 12px;font-size:12px;}
+  .care b{display:block;font-size:11.5px;color:#a084a8;letter-spacing:.06em;margin-bottom:4px;font-weight:600;}
+  .care span{color:#6d5f70;line-height:1.75;display:block;}
+  .my-btn{display:block;width:100%;margin-top:22px;background:none;
+    border:1px solid #d7c3de;color:#8b6f94;border-radius:999px;padding:11px;
+    font-size:13px;letter-spacing:.12em;cursor:pointer;font-family:inherit;transition:.2s;}
+  .my-btn:hover{background:#f4ecf6;}
+  .my-btn.registered{border-color:#c98bb0;color:#c06a9c;}
+
+  footer{margin-top:44px;text-align:center;font-size:11px;color:#a99cab;
+    letter-spacing:.06em;line-height:2;}
+
+  /* ---- diagnosis ---- */
+  .diag-open-btn{display:block;width:100%;background:var(--card);
+    border:1px solid #d7c3de;color:#7c6a80;border-radius:18px;padding:18px 16px;
+    font-size:14px;letter-spacing:.08em;cursor:pointer;font-family:inherit;
+    transition:.2s;line-height:1.9;box-shadow:0 2px 10px rgba(120,90,130,.06);}
+  .diag-open-btn:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(120,90,130,.14);}
+  .diag-open-btn small{display:block;font-size:11.5px;color:var(--ink-soft);letter-spacing:.06em;}
+  #diagBody{display:none;}
+  .q-card{background:var(--card);border:1px solid #eee2ea;border-radius:16px;
+    padding:14px 16px;margin-bottom:10px;}
+  .q-text{font-size:13.5px;line-height:1.9;letter-spacing:.02em;}
+  .q-text b{color:#a084a8;font-weight:600;font-size:11.5px;margin-right:8px;}
+  .q-opts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px;}
+  .q-opts button{background:#faf6f2;border:1px solid #eee2ea;border-radius:999px;
+    padding:8px 4px;font-size:11.5px;color:#6d5f70;cursor:pointer;
+    font-family:inherit;letter-spacing:.02em;transition:.15s;}
+  .q-opts button.sel{background:#efe2f2;border-color:#c9a9d6;color:#7c5a86;}
+  .diag-btn{display:block;width:100%;margin-top:14px;
+    background:linear-gradient(150deg,#c8a4d4,#a583b8);color:#fff;border:none;
+    border-radius:999px;padding:14px;font-size:14px;letter-spacing:.16em;
+    cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(150,100,170,.25);transition:.2s;}
+  .diag-btn:hover{transform:translateY(-1px);}
+  .diag-note{font-size:11.5px;color:var(--ink-soft);text-align:center;margin-top:10px;letter-spacing:.04em;}
+  #diagResult{display:none;margin-top:18px;}
+  .dr-card{background:var(--card);border:1px solid #eee2ea;border-radius:20px;
+    overflow:hidden;box-shadow:0 6px 24px rgba(120,90,130,.10);}
+  .dr-head{padding:20px 20px 16px;text-align:center;color:#fff;}
+  .dr-head .dr-label{font-size:11.5px;opacity:.92;letter-spacing:.14em;}
+  .dr-head h3{font-size:19px;font-weight:600;letter-spacing:.08em;margin-top:4px;}
+  .dr-body{padding:18px 20px 22px;}
+  .dr-msg{font-size:14px;line-height:2.1;background:#faf6f2;border-radius:12px;padding:14px 16px;}
+  .dr-second{font-size:12px;color:var(--ink-soft);text-align:center;margin-top:12px;letter-spacing:.04em;}
+  .dr-jump{display:block;width:100%;margin-top:14px;background:none;
+    border:1px solid #d7c3de;color:#8b6f94;border-radius:999px;padding:11px;
+    font-size:12.5px;letter-spacing:.1em;cursor:pointer;font-family:inherit;transition:.2s;}
+  .dr-jump:hover{background:#f4ecf6;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="lotus">❁</div>
+    <h1>今日のチャクラ</h1>
+    <p class="subtitle">8つのエネルギーセンターからの、今日のひとこと</p>
+    <div class="today" id="todayLabel"></div>
+  </header>
+
+  <section>
+    <h2 class="sec-title">今日ととのいやすいチャクラ TOP3</h2>
+    <div id="ranking"></div>
+  </section>
+
+  <section>
+    <h2 class="sec-title">あなたのチャクラを選んでね</h2>
+    <div class="chips" id="chips"></div>
+    <p class="hint">今日なんとなく気になった色を選ぶだけでも大丈夫だよ</p>
+  </section>
+
+  <section id="diagnosis">
+    <h2 class="sec-title">いまの自分をみる かんたん診断</h2>
+    <button class="diag-open-btn" id="diagOpenBtn" type="button">
+      いまの状況の質問に10個答えると、<br>いまいちばんケアしたいチャクラがわかるよ
+      <small>（約1分・こたえはこの画面の中だけ）</small>
+    </button>
+    <div id="diagBody">
+      <div id="qList"></div>
+      <button class="diag-btn" id="diagRunBtn" type="button">診断結果をみる</button>
+      <p class="diag-note" id="diagNote">いまのあなたにいちばん近いものを、直感で選んでね</p>
+      <div id="diagResult">
+        <div class="dr-card">
+          <div class="dr-head" id="drHead">
+            <p class="dr-label">いまいちばんケアしてあげたいのは</p>
+            <h3 id="drName"></h3>
+          </div>
+          <div class="dr-body">
+            <p class="dr-msg" id="drMsg"></p>
+            <p class="dr-second" id="drSecond"></p>
+            <button class="dr-jump" id="drJump" type="button">このチャクラの「今日のひとこと」を見る</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="detail">
+    <div class="d-card">
+      <div class="d-head" id="dHead">
+        <p class="d-alias" id="dAlias"></p>
+        <h2 id="dName"></h2>
+        <p class="d-sanskrit" id="dSanskrit"></p>
+        <span class="d-place" id="dPlace"></span>
+      </div>
+      <div class="d-body">
+        <p class="d-keywords" id="dKeywords"></p>
+
+        <p class="d-msg-label">─ 今日のひとこと ─</p>
+        <p class="d-msg" id="dMsg"></p>
+
+        <div class="d-sub">
+          <h3>このチャクラのサイン</h3>
+          <div class="sign-cols">
+            <div class="sign-box">
+              <b>満ちているとき</b>
+              <ul id="dOpen"></ul>
+            </div>
+            <div class="sign-box">
+              <b>ゆらいでいるとき</b>
+              <ul id="dClose"></ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-sub">
+          <h3>今日のセルフケア</h3>
+          <div class="care-grid" id="dCare"></div>
+        </div>
+
+        <button class="my-btn" id="myBtn" type="button"></button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    このリーディングは医療診断ではなく、<br>
+    内観とセルフケアのための参考として楽しんでね。<br>
+    つらさが続くときは、お医者さんにも頼ってね。<br><br>
+    © natsuko
+  </footer>
+</div>
+
+<script>
+const CHAKRAS = [
+  {
+    no:1, name:"ルートチャクラ", alias:"第1チャクラ", sanskrit:"ムーラダーラ（根・支えるもの）",
+    color:"#c9524a", light:"#e08a83",
+    place:"尾てい骨のあたり", keywords:"安心 ・ 土台 ・ 生きる力",
+    open:["地に足がついている","深いところからの安心感","生きる意欲が湧く"],
+    close:["理由のない不安・あせり","からだが重い、疲れやすい","人の意見に流されやすい"],
+    care:{
+      food:"ゴボウやニンジンなどの根菜、トマトや赤いりんご。土の恵みをゆっくり味わって",
+      stone:"ルビー、ヘマタイト、タイガーアイなど赤や茶色の石",
+      aroma:"シダーウッド、パチュリ、ベチバー。深く重い香りが土台を支えてくれる",
+      sound:"ソルフェジオ周波数 396Hz"
+    },
+    rankText:"安心の土台が育ちやすい日。あたたかい食事と休息を",
+    msgs:[
+      "今日は、あたたかいごはんをゆっくり食べることが、いちばんの魔法。ちゃんと食べて、ちゃんと眠る。それだけで土台は育っていくよ。",
+      "不安が顔を出す日は、足の裏を感じてみて。地面はいつでも、あなたを支えてくれているよ。",
+      "がんばって強くならなくて大丈夫。「ここにいていい」って感じられる場所に、少しだけ長くいてあげてね。",
+      "今日のあなたに必要なのは、特別なことじゃなくて「いつもの安心」。お気に入りの場所で、ほっとひと息つこう。",
+      "焦らなくていいよ。根っこが育つのは、いつも見えないところから。今日のあなたも、ちゃんと育ってる。"
+    ]
+  },
+  {
+    no:2, name:"セイクラルチャクラ", alias:"第2チャクラ", sanskrit:"スヴァディスターナ（甘さ）",
+    color:"#e08e3c", light:"#f0b06a",
+    place:"おへその下のあたり", keywords:"よろこび ・ 感情 ・ 創造",
+    open:["人生を楽しいと感じられる","感情を素直に表現できる","小さなことにも喜びを見つけられる"],
+    close:["楽しむことに罪悪感がある","感情にふたをしてしまう","なにかに頼りすぎてしまう"],
+    care:{
+      food:"オレンジやマンゴーなどのフルーツ。みずみずしさが心をゆるめてくれる",
+      stone:"カーネリアン、シトリン、ムーンストーンなどオレンジ系の石",
+      aroma:"ジャスミン、イランイラン。よろこびの感覚を思い出させてくれる香り",
+      sound:"ソルフェジオ周波数 417Hz"
+    },
+    rankText:"よろこびのアンテナが敏感な日。「好き」を大切に",
+    msgs:[
+      "「楽しい」を選ぶことに、理由はいらないよ。今日は自分がよろこぶことを、ひとつだけ許してあげて。",
+      "泣きたいときは泣いていいし、笑いたいときは笑っていい。感情に良いも悪いもないからね。",
+      "今日は五感がよろこぶものを。おいしいもの、いい香り、好きな音楽。小さな「心地いい」が明日のエネルギーになるよ。",
+      "がまんが続いていたら、それに気づけただけで花マル。今日は少しだけ、自分を甘やかしてみてね。",
+      "あなたの「好き」は、あなただけのもの。誰かと比べなくていいんだよ。"
+    ]
+  },
+  {
+    no:3, name:"ソーラープレクサスチャクラ", alias:"第3チャクラ", sanskrit:"マニプーラ（光る宝石）",
+    color:"#e3b93a", light:"#f2d372",
+    place:"みぞおちのあたり", keywords:"自信 ・ 意志 ・ 勇気",
+    open:["自分で決められる","自分に価値があると感じられる","前向きに一歩を踏み出せる"],
+    close:["人任せにしてしまう","批判が必要以上に気になる","胃のあたりが重く感じる"],
+    care:{
+      food:"レモンやグレープフルーツ、バナナなど黄色い食材。消化にもやさしく",
+      stone:"イエローオパール、サンストーン。太陽の力を貸してくれる石",
+      aroma:"ジュニパー、グレープフルーツ。気持ちをすっきり軽くしてくれる香り",
+      sound:"ソルフェジオ周波数 528Hz"
+    },
+    rankText:"自分で決める力が湧きやすい日。小さな一歩を",
+    msgs:[
+      "小さな「決める」を大切にする日。今日のお昼ごはん、着る服。自分で選べたら、それがもう自信の種だよ。",
+      "誰かの正解より、あなたの本音。今日は「わたしはこう思う」を、心の中でつぶやくだけでもいいからね。",
+      "うまくいかない日があっても、あなたの価値は1ミリも減らないよ。おなかを温めて、ゆっくりしてね。",
+      "今日はほんの少し、勇気の日。ずっと気になっていたことに、一歩だけ近づいてみるのもいいかも。",
+      "人に譲ってばかりだったな、と思ったら、今日はあなたの番。自分の気持ちを先に聞いてあげてね。"
+    ]
+  },
+  {
+    no:4, name:"ハートチャクラ", alias:"第4チャクラ", sanskrit:"アナハータ（衝突のない）",
+    color:"#5aa86e", light:"#8cc79a",
+    place:"胸の中央", keywords:"愛 ・ つながり ・ ゆるし",
+    open:["ありのままの自分を受け入れられる","人のいいところが見える","与えることも受け取ることも心地いい"],
+    close:["愛されているか不安になる","人と親密になるのがこわい","呼吸が浅くなっている"],
+    care:{
+      food:"ブロッコリーやほうれん草など緑の野菜。心とからだを整えてくれる",
+      stone:"ローズクォーツ、エメラルド、ヒスイ。愛と癒しの石",
+      aroma:"ローズ、ベルガモット。心をまるごとあたたかく包んでくれる香り",
+      sound:"ソルフェジオ周波数 639Hz"
+    },
+    rankText:"心がひらきやすい日。「ありがとう」が循環するよ",
+    msgs:[
+      "深呼吸をひとつ。愛は空気みたいに、いつでもあなたのまわりにあるよ。",
+      "今日は「ありがとう」をひとつ、声に出してみて。言った自分の胸が、いちばんあたたかくなるから。",
+      "受け取ることも、愛のかたち。今日は素直に「うれしい」って受け取ってみてね。",
+      "誰かに優しくできなかった日も、大丈夫。まずは自分に優しく。順番はそれでいいんだよ。",
+      "人との距離に疲れたら、少し離れてもいい。離れることも、大切にすることのひとつだよ。"
+    ]
+  },
+  {
+    no:5, name:"スロートチャクラ", alias:"第5チャクラ", sanskrit:"ヴィシュダ（浄化）",
+    color:"#4f9bc4", light:"#85bedd",
+    place:"喉のあたり", keywords:"表現 ・ ことば ・ 正直",
+    open:["本音を心地よく伝えられる","会話や創作が楽しい","声にハリがある"],
+    close:["言いたいことを飲み込んでしまう","喉がつまる感じがする","本当の自分を出せていない気がする"],
+    care:{
+      food:"海藻や青魚、あたたかいハーブティー。ことばの通り道をうるおして",
+      stone:"アクアマリン、ソーダライト、ターコイズなど青い石",
+      aroma:"カモミール、ペパーミント。のどと心をすっと軽くしてくれる香り",
+      sound:"ソルフェジオ周波数 741Hz"
+    },
+    rankText:"ことばが届きやすい日。本音をひとつ言葉に",
+    msgs:[
+      "言えなかった言葉があるなら、まずはノートに書いてみて。声にする前の練習も、立派な自己表現だよ。",
+      "今日は「ほんとうはこうしたい」を、ひとつだけ言葉にしてみる日。小さな声でも、ちゃんと届くよ。",
+      "のどが乾いたら、あたたかいハーブティーを。ことばの通り道を、やさしく潤してあげてね。",
+      "うまく話せなくても大丈夫。あなたのペースで紡いだ言葉が、いちばんあなたらしいから。",
+      "今日は好きな歌を口ずさんでみて。声を出すことそのものが、心の浄化になるよ。"
+    ]
+  },
+  {
+    no:6, name:"サードアイチャクラ", alias:"第6チャクラ", sanskrit:"アージュニャー（第三の目）",
+    color:"#4a5a9e", light:"#7d8ac2",
+    place:"眉間のあたり", keywords:"直感 ・ ビジョン ・ 知恵",
+    open:["直感がすっと降りてくる","ものごとを落ち着いて見られる","美しいものに心が動く"],
+    close:["考えすぎて頭が疲れている","集中しづらい","先のことばかり心配になる"],
+    care:{
+      food:"ブルーベリーやプルーンなど濃い青の食べもの。新鮮なお水も忘れずに",
+      stone:"ラピスラズリ、アメジスト、カイヤナイトなど藍色の石",
+      aroma:"ローズマリー、ジュニパー。頭をクリアにしてくれる香り",
+      sound:"ソルフェジオ周波数 852Hz"
+    },
+    rankText:"直感が冴えやすい日。「なんとなく」を信じて",
+    msgs:[
+      "「なんとなくこっち」の感覚、今日は信じてみて。あなたの直感は、あなたの味方だよ。",
+      "考えすぎて疲れたら、目を閉じて3回深呼吸。答えは静けさの中で待っていてくれるよ。",
+      "今日は美しいものを見る日。空でも花でも絵でもいい。美しさは魂のごはんだからね。",
+      "頭の中がぐるぐるする日は、紙に全部書き出してみて。見えてくるものがきっとあるよ。",
+      "未来のことは、今わからなくて大丈夫。今日見えているものを、ただ丁寧に見つめてみてね。"
+    ]
+  },
+  {
+    no:7, name:"クラウンチャクラ", alias:"第7チャクラ", sanskrit:"サハスラーラ（千倍）",
+    color:"#8d5fb0", light:"#b48fce",
+    place:"頭のてっぺん", keywords:"霊性 ・ ゆだねる ・ 大いなる流れ",
+    open:["大きな流れに守られている感覚がある","自分の人生の意味を感じられる","心が静かで満ちている"],
+    close:["達成感や充実感が得られない","直感がにぶっている気がする","ひとりで抱え込んでいる"],
+    care:{
+      food:"白湯やデトックスティーで、からだの中を軽やかに。食べすぎない日もいいね",
+      stone:"アメジスト、水晶。心とからだの調和をもたらす石",
+      aroma:"フランキンセンス、ラベンダー。祈りの時間に寄り添う神聖な香り",
+      sound:"ソルフェジオ周波数 963Hz"
+    },
+    rankText:"大きな流れとつながりやすい日。静かな時間を",
+    msgs:[
+      "がんばってもどうにもならないことは、いったん宇宙にお任せ。ゆだねることは、あきらめじゃないよ。",
+      "今日は少しだけ静かな時間を。目を閉じるだけの1分が、あなたを深いところから整えてくれるよ。",
+      "あなたがここにいること、それ自体に意味があるよ。何かを成し遂げなくても、存在そのものが尊いの。",
+      "答えを急がなくていい日。空を見上げて、大きな流れの中にいる自分を感じてみてね。",
+      "今日の出来事は、ぜんぶ必要なタイミングでやってくる。安心して、目の前のことをひとつずつね。"
+    ]
+  },
+  {
+    no:8, name:"ソウルスターチャクラ", alias:"第8チャクラ", sanskrit:"チャンドラ（月のチャクラ）",
+    color:"#9a90a8", light:"#c3bccd",
+    place:"頭上30cmほどの空間", keywords:"魂 ・ 宇宙とのつながり ・ 手放し",
+    open:["すっと手放せる","深い充実感・至福感がある","不思議と導かれている感じがする"],
+    close:["手放したいのに握りしめてしまう","新しい気づきが入ってこない","理屈で考えすぎてしまう"],
+    care:{
+      food:"自然の恵みをそのままに。無農薬の野菜や、新鮮な空気を胸いっぱいに",
+      stone:"クリアクォーツ、ラブラドライト、グレームーンストーン",
+      aroma:"ローズウッド、シダーウッド、ネロリ。8つのチャクラを統合してくれる香り",
+      sound:"ソルフェジオ周波数 174Hz"
+    },
+    rankText:"手放しがスムーズな日。深呼吸で新しい風を",
+    msgs:[
+      "手放したいものがあるなら、「ありがとう」と一緒にそっと置いていこう。空いた場所に、新しい光が入ってくるよ。",
+      "今日は窓を開けて、新しい空気を胸いっぱいに。あなたの魂も、深呼吸したがっているよ。",
+      "あなたの中には、あなたよりずっと大きな知恵が流れてる。だから大丈夫、ちゃんと導かれてるよ。",
+      "意味がわからない出来事も、あとから「あのためだったんだ」に変わることがある。今日は流れを信頼してみてね。",
+      "何もしない時間も、魂にとっては大切なお仕事。ぼーっとする自分に、OKを出してあげてね。"
+    ]
+  }
+];
+
+/* ---- 日付シード（毎日同じ結果、日が変わると変わる） ---- */
+const now = new Date();
+const seedNum = now.getFullYear()*10000 + (now.getMonth()+1)*100 + now.getDate();
+function mulberry32(a){
+  return function(){
+    a |= 0; a = a + 0x6D2B79F5 | 0;
+    let t = Math.imul(a ^ a >>> 15, 1 | a);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+const rand = mulberry32(seedNum);
+const dayOfYear = Math.floor((now - new Date(now.getFullYear(),0,0)) / 86400000);
+
+/* ---- 今日の日付表示 ---- */
+const WEEK = ["日","月","火","水","木","金","土"];
+document.getElementById("todayLabel").textContent =
+  `${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日（${WEEK[now.getDay()]}）`;
+
+/* ---- ランキング TOP3 ---- */
+const order = CHAKRAS.map((_,i)=>i);
+for(let i=order.length-1;i>0;i--){
+  const j = Math.floor(rand()*(i+1));
+  [order[i],order[j]] = [order[j],order[i]];
+}
+const rankEl = document.getElementById("ranking");
+order.slice(0,3).forEach((idx,pos)=>{
+  const c = CHAKRAS[idx];
+  const div = document.createElement("div");
+  div.className = "rank-card";
+  div.innerHTML = `
+    <div class="rank-no"><strong>${pos+1}</strong>位</div>
+    <div class="rank-dot" style="background:radial-gradient(circle at 35% 30%, ${c.light}, ${c.color})"></div>
+    <div class="rank-body">
+      <p class="rank-name">${c.alias}　${c.name}</p>
+      <p class="rank-text">${c.rankText}</p>
+    </div>`;
+  div.style.cursor = "pointer";
+  div.addEventListener("click", ()=>selectChakra(idx, true));
+  rankEl.appendChild(div);
+});
+
+/* ---- チップ一覧 ---- */
+const MY_KEY = "natsuko_my_chakra";
+const chipsEl = document.getElementById("chips");
+CHAKRAS.forEach((c,idx)=>{
+  const b = document.createElement("button");
+  b.type = "button";
+  b.className = "chip";
+  b.id = `chip-${idx}`;
+  b.innerHTML = `
+    <div class="c-dot" style="background:radial-gradient(circle at 35% 30%, ${c.light}, ${c.color})"></div>
+    <div class="c-num">${c.alias}</div>
+    <div class="c-name">${c.name}</div>
+    <div class="c-my">♡ マイチャクラ</div>`;
+  b.addEventListener("click", ()=>selectChakra(idx, true));
+  chipsEl.appendChild(b);
+});
+
+/* ---- 詳細表示 ---- */
+let currentIdx = null;
+function selectChakra(idx, scroll){
+  currentIdx = idx;
+  const c = CHAKRAS[idx];
+  document.querySelectorAll(".chip").forEach(el=>el.classList.remove("active"));
+  document.getElementById(`chip-${idx}`).classList.add("active");
+
+  document.getElementById("dHead").style.background =
+    `linear-gradient(150deg, ${c.light} 0%, ${c.color} 100%)`;
+  document.getElementById("dAlias").textContent = c.alias;
+  document.getElementById("dName").textContent = c.name;
+  document.getElementById("dSanskrit").textContent = c.sanskrit;
+  document.getElementById("dPlace").textContent = `場所：${c.place}`;
+  document.getElementById("dKeywords").textContent = c.keywords;
+
+  const msg = c.msgs[(dayOfYear + idx*3) % c.msgs.length];
+  document.getElementById("dMsg").textContent = msg;
+
+  document.getElementById("dOpen").innerHTML  = c.open.map(t=>`<li>${t}</li>`).join("");
+  document.getElementById("dClose").innerHTML = c.close.map(t=>`<li>${t}</li>`).join("");
+
+  document.getElementById("dCare").innerHTML = `
+    <div class="care"><b>たべもの</b><span>${c.care.food}</span></div>
+    <div class="care"><b>パワーストーン</b><span>${c.care.stone}</span></div>
+    <div class="care"><b>アロマ</b><span>${c.care.aroma}</span></div>
+    <div class="care"><b>おと</b><span>${c.care.sound}</span></div>`;
+
+  updateMyBtn();
+  const d = document.getElementById("detail");
+  d.style.display = "block";
+  if(scroll) d.scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+/* ---- マイチャクラ ---- */
+function updateMyBtn(){
+  const my = localStorage.getItem(MY_KEY);
+  const btn = document.getElementById("myBtn");
+  document.querySelectorAll(".chip").forEach((el,i)=>
+    el.classList.toggle("is-my", String(i) === my));
+  if(String(currentIdx) === my){
+    btn.textContent = "♡ マイチャクラに登録済み（タップで解除）";
+    btn.classList.add("registered");
+  }else{
+    btn.textContent = "このチャクラをマイチャクラにする";
+    btn.classList.remove("registered");
+  }
+}
+document.getElementById("myBtn").addEventListener("click", ()=>{
+  const my = localStorage.getItem(MY_KEY);
+  if(String(currentIdx) === my){
+    localStorage.removeItem(MY_KEY);
+  }else{
+    localStorage.setItem(MY_KEY, String(currentIdx));
+  }
+  updateMyBtn();
+});
+
+/* ---- かんたん診断（10問） ---- */
+const CARE_MSGS = [
+  "安心の土台が、少しおつかれ気味かも。今日はあたたかいものを食べて、早めにおやすみ。それだけで根っこはちゃんと回復していくよ。",
+  "よろこびのセンサーが、少しおやすみしているみたい。小さな「好き」「心地いい」をひとつだけ、自分に許してあげてね。",
+  "自分軸が少しゆらいでいるみたい。今日のごはんや着る服など、小さなことを自分で決めるところから、ゆっくり取り戻していこうね。",
+  "心が少しきゅっとなっているのかも。まずは深呼吸をひとつ。誰かにやさしくする前に、自分にやさしくするところから始めよう。",
+  "ことばの通り道に、少しがまんがたまっているみたい。ノートに本音を書き出すだけでも、すーっと軽くなるよ。",
+  "頭ががんばりすぎているみたい。目を閉じて深呼吸して、「なんとなく」の感覚に戻る時間を、少しだけつくってあげてね。",
+  "大きな流れとのつながりを、見失いかけているのかも。静かな時間を少しだけ。ゆだねる練習を、今日からゆっくりね。",
+  "手放しのタイミングが来ているみたい。「ありがとう」と一緒に、そっと置いていこう。空いた場所に、新しい光が入ってくるよ。"
+];
+const QUESTIONS = [
+  { text:"なんとなく不安で、心がそわそわ落ち着かない", w:{0:1} },
+  { text:"最近「楽しい」「うれしい」を感じることが減っている", w:{1:1} },
+  { text:"気づいたら、人に合わせていることが多い", w:{2:1} },
+  { text:"人とのつながりを感じられず、さみしさがある", w:{3:1} },
+  { text:"言いたいことを飲み込んでしまうことが多い", w:{4:1} },
+  { text:"頭の中で、考えごとがぐるぐる止まらない", w:{5:1} },
+  { text:"なんのためにがんばっているのか、わからなくなるときがある", w:{6:1} },
+  { text:"過去のことや終わったことを、つい握りしめてしまう", w:{7:1} },
+  { text:"からだが重くて、疲れがぬけにくい", w:{0:0.5, 2:0.5} },
+  { text:"呼吸が浅い気がする・胸やのどがつまる感じがある", w:{3:0.5, 4:0.5} }
+];
+const OPT_LABELS = ["あてはまる","すこし","あてはまらない"];
+const OPT_VALUES = [2,1,0];
+const answers = new Array(QUESTIONS.length).fill(null);
+
+document.getElementById("diagOpenBtn").addEventListener("click", ()=>{
+  document.getElementById("diagOpenBtn").style.display = "none";
+  document.getElementById("diagBody").style.display = "block";
+});
+
+const qListEl = document.getElementById("qList");
+QUESTIONS.forEach((q,qi)=>{
+  const card = document.createElement("div");
+  card.className = "q-card";
+  const opts = OPT_LABELS.map((label,oi)=>
+    `<button type="button" data-q="${qi}" data-o="${oi}">${label}</button>`).join("");
+  card.innerHTML = `<p class="q-text"><b>Q${qi+1}</b>${q.text}</p><div class="q-opts">${opts}</div>`;
+  qListEl.appendChild(card);
+});
+qListEl.addEventListener("click", e=>{
+  const btn = e.target.closest("button[data-q]");
+  if(!btn) return;
+  const qi = +btn.dataset.q;
+  answers[qi] = OPT_VALUES[+btn.dataset.o];
+  btn.parentElement.querySelectorAll("button").forEach(b=>b.classList.remove("sel"));
+  btn.classList.add("sel");
+});
+
+document.getElementById("diagRunBtn").addEventListener("click", ()=>{
+  const note = document.getElementById("diagNote");
+  const unanswered = answers.filter(a=>a===null).length;
+  if(unanswered > 0){
+    note.textContent = `あと${unanswered}問だけ、こたえを選んでみてね（どれを選んでも大丈夫だよ）`;
+    return;
+  }
+  note.textContent = "いまのあなたにいちばん近いものを、直感で選んでね";
+
+  const score = new Array(CHAKRAS.length).fill(0);
+  const max   = new Array(CHAKRAS.length).fill(0);
+  QUESTIONS.forEach((q,qi)=>{
+    for(const [idx,w] of Object.entries(q.w)){
+      score[idx] += answers[qi] * w;
+      max[idx]   += 2 * w;
+    }
+  });
+  const ratios = score.map((s,i)=> s / max[i]);
+  const order = ratios.map((r,i)=>i).sort((a,b)=> ratios[b]-ratios[a]);
+  const resEl = document.getElementById("diagResult");
+  resEl.style.display = "block";
+
+  const top = order[0], second = order[1];
+  const drHead = document.getElementById("drHead");
+  const drName = document.getElementById("drName");
+  const drMsg  = document.getElementById("drMsg");
+  const drSecondEl = document.getElementById("drSecond");
+  const drJump = document.getElementById("drJump");
+
+  if(ratios[top] === 0){
+    drHead.style.background = "linear-gradient(150deg,#c8a4d4,#a583b8)";
+    document.querySelector(".dr-label").textContent = "診断結果";
+    drName.textContent = "どのチャクラも おだやか";
+    drMsg.textContent = "いまのあなたは、8つのチャクラがどれも大きくゆらいでいないみたい。その調子で、今日も自分にやさしくね。";
+    drSecondEl.textContent = "";
+    drJump.style.display = "none";
+  }else{
+    const c = CHAKRAS[top];
+    drHead.style.background = `linear-gradient(150deg, ${c.light} 0%, ${c.color} 100%)`;
+    document.querySelector(".dr-label").textContent = "いまいちばんケアしてあげたいのは";
+    drName.textContent = `${c.alias}　${c.name}`;
+    drMsg.textContent = CARE_MSGS[top];
+    drSecondEl.textContent = ratios[second] > 0
+      ? `つぎにいたわってあげたいのは ${CHAKRAS[second].alias}（${CHAKRAS[second].name}）だよ`
+      : "";
+    drJump.style.display = "block";
+    drJump.onclick = ()=>selectChakra(top, true);
+  }
+  resEl.scrollIntoView({behavior:"smooth", block:"nearest"});
+});
+
+/* ---- 初期表示：マイチャクラがあれば自動で開く ---- */
+const saved = localStorage.getItem(MY_KEY);
+if(saved !== null && CHAKRAS[+saved]){
+  selectChakra(+saved, false);
+}
+</script>
+</body>
+</html>
