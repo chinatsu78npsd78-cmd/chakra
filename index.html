@@ -133,6 +133,12 @@
     border:1px solid #d7c3de;color:#8b6f94;border-radius:999px;padding:11px;
     font-size:12.5px;letter-spacing:.1em;cursor:pointer;font-family:inherit;transition:.2s;}
   .dr-jump:hover{background:#f4ecf6;}
+  #drCareWrap{margin-top:18px;}
+  .dr-care-title{font-size:12px;letter-spacing:.12em;color:#a084a8;text-align:center;margin-bottom:10px;}
+  .dr-bridge{margin-top:20px;padding:16px 16px 14px;border-radius:14px;
+    background:linear-gradient(160deg,#f7eef5,#f1ecf7);border:1px solid #ecdff0;
+    font-size:12.5px;line-height:2;color:#7c6a80;text-align:center;letter-spacing:.02em;}
+  .dr-bridge .dr-bridge-heart{font-size:15px;color:#c98bb0;display:block;margin-bottom:4px;}
 </style>
 </head>
 <body>
@@ -174,8 +180,18 @@
           </div>
           <div class="dr-body">
             <p class="dr-msg" id="drMsg"></p>
+            <div id="drCareWrap">
+              <p class="dr-care-title">今日できる、やさしいセルフケア</p>
+              <div class="care-grid" id="drCare"></div>
+            </div>
             <p class="dr-second" id="drSecond"></p>
             <button class="dr-jump" id="drJump" type="button">このチャクラの「今日のひとこと」を見る</button>
+            <div class="dr-bridge" id="drBridge">
+              <span class="dr-bridge-heart">♡</span>
+              この結果が、少し心に触れたなら。<br>
+              よかったら、今日のあなたのチャクラを、<br>トークでそっと教えてね。<br>
+              あなたのことを、もっと知れたら うれしいな。
+            </div>
           </div>
         </div>
       </div>
@@ -601,6 +617,7 @@ document.getElementById("diagRunBtn").addEventListener("click", ()=>{
     document.querySelector(".dr-label").textContent = "診断結果";
     drName.textContent = "どのチャクラも おだやか";
     drMsg.textContent = "いまのあなたは、8つのチャクラがどれも大きくゆらいでいないみたい。その調子で、今日も自分にやさしくね。";
+    document.getElementById("drCareWrap").style.display = "none";
     drSecondEl.textContent = "";
     drJump.style.display = "none";
   }else{
@@ -609,6 +626,12 @@ document.getElementById("diagRunBtn").addEventListener("click", ()=>{
     document.querySelector(".dr-label").textContent = "いまいちばんケアしてあげたいのは";
     drName.textContent = `${c.alias}　${c.name}`;
     drMsg.textContent = CARE_MSGS[top];
+    document.getElementById("drCareWrap").style.display = "block";
+    document.getElementById("drCare").innerHTML = `
+      <div class="care"><b>たべもの</b><span>${c.care.food}</span></div>
+      <div class="care"><b>パワーストーン</b><span>${c.care.stone}</span></div>
+      <div class="care"><b>アロマ</b><span>${c.care.aroma}</span></div>
+      <div class="care"><b>おと</b><span>${c.care.sound}</span></div>`;
     drSecondEl.textContent = ratios[second] > 0
       ? `つぎにいたわってあげたいのは ${CHAKRAS[second].alias}（${CHAKRAS[second].name}）だよ`
       : "";
