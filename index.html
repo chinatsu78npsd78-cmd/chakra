@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>今日のチャクラ｜8つのエネルギーからの今日のひとこと</title>
+<title>今日のチャクラ／今日の波｜なつこ式リーディング</title>
 <meta name="description" content="8つのチャクラから届く、今日のひとこと。やさしい全肯定のチャクラだより。">
 <style>
   :root{
@@ -139,10 +139,82 @@
     background:linear-gradient(160deg,#f7eef5,#f1ecf7);border:1px solid #ecdff0;
     font-size:12.5px;line-height:2;color:#7c6a80;text-align:center;letter-spacing:.02em;}
   .dr-bridge .dr-bridge-heart{font-size:15px;color:#c98bb0;display:block;margin-bottom:4px;}
+
+  /* ---- タブ切り替え ---- */
+  .tab-nav{display:flex;gap:8px;margin-bottom:24px;background:var(--card);
+    border:1px solid #eee2ea;border-radius:999px;padding:5px;
+    box-shadow:0 2px 10px rgba(120,90,130,.06);}
+  .tab-btn{flex:1;border:none;background:none;font-family:inherit;
+    font-size:13.5px;letter-spacing:.08em;color:#a093a5;padding:11px 4px;
+    border-radius:999px;cursor:pointer;transition:.2s;}
+  .tab-btn.active{background:linear-gradient(150deg,#c8a4d4,#a583b8);color:#fff;
+    box-shadow:0 3px 10px rgba(150,100,170,.22);}
+  #viewNami{display:none;}
+
+  /* ---- 今日の波 ---- */
+  .mark{font-size:24px;letter-spacing:6px;color:#9db4cf;}
+  #birthView{display:none;}
+  .birth-card{background:var(--card);border:1px solid #eee2ea;border-radius:20px;
+    padding:26px 22px;box-shadow:0 4px 18px rgba(120,90,130,.08);text-align:center;}
+  .birth-card p{font-size:13.5px;color:#6d5f70;margin-bottom:16px;line-height:2.1;}
+  .birth-selects{display:flex;gap:8px;justify-content:center;margin-bottom:18px;}
+  .birth-selects select{font-family:inherit;font-size:14px;color:var(--ink);
+    background:#faf6f2;border:1px solid #e6dbe8;border-radius:12px;padding:10px 8px;}
+  .birth-btn{display:block;width:100%;
+    background:linear-gradient(150deg,#a8bcd8,#8f9fd0);color:#fff;border:none;
+    border-radius:999px;padding:14px;font-size:14px;letter-spacing:.16em;
+    cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(120,140,190,.25);transition:.2s;}
+  .birth-btn:hover{transform:translateY(-1px);}
+  .birth-note{font-size:11px;color:var(--ink-soft);margin-top:12px;letter-spacing:.04em;}
+  #mainView{display:none;}
+  .sign-line{text-align:center;font-size:12.5px;color:var(--ink-soft);
+    letter-spacing:.1em;margin-bottom:22px;}
+  .num-card{background:var(--card);border:1px solid #eee2ea;border-radius:22px;
+    padding:24px 20px 20px;box-shadow:0 4px 18px rgba(120,90,130,.08);text-align:center;}
+  .num-label{font-size:12px;letter-spacing:.16em;color:#a084a8;}
+  .num-big{font-size:44px;font-weight:600;color:#7c6a80;line-height:1.3;}
+  .num-keyword{font-size:15px;letter-spacing:.14em;color:var(--ink);margin-bottom:6px;}
+  .wave-box{margin-top:14px;}
+  .wave-box svg{width:100%;height:auto;display:block;}
+  .wave-caption{font-size:11.5px;color:var(--ink-soft);margin-top:6px;letter-spacing:.06em;}
+  .sky-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .sky-card{background:var(--card);border:1px solid #eee2ea;border-radius:18px;
+    padding:16px 14px;text-align:center;box-shadow:0 2px 10px rgba(120,90,130,.06);}
+  .sky-icon{font-size:26px;line-height:1.4;}
+  .sky-name{font-size:13px;letter-spacing:.1em;color:var(--ink);margin:2px 0 6px;}
+  .sky-text{font-size:11.5px;color:var(--ink-soft);line-height:1.9;text-align:left;}
+  .msg-card{background:var(--card);border:1px solid #eee2ea;border-radius:20px;
+    padding:20px 20px;box-shadow:0 2px 10px rgba(120,90,130,.06);}
+  .msg-card + .msg-card{margin-top:12px;}
+  .msg-head{font-size:12px;letter-spacing:.14em;color:#a084a8;text-align:center;margin-bottom:8px;}
+  .msg-body{font-size:14px;line-height:2.15;letter-spacing:.02em;}
+  .chakra-card{border-radius:22px;overflow:hidden;background:var(--card);
+    border:1px solid #eee2ea;box-shadow:0 6px 24px rgba(120,90,130,.10);}
+  .chakra-head{padding:20px 20px 16px;text-align:center;color:#fff;}
+  .chakra-head .ch-label{font-size:11.5px;opacity:.92;letter-spacing:.14em;}
+  .chakra-head h3{font-size:19px;font-weight:600;letter-spacing:.08em;margin-top:4px;}
+  .chakra-head .ch-kw{font-size:11.5px;opacity:.9;letter-spacing:.1em;margin-top:2px;}
+  .chakra-body{padding:18px 18px 20px;}
+  .chakra-link{display:block;text-align:center;margin-top:14px;font-size:12px;
+    color:#8b6f94;letter-spacing:.06em;cursor:pointer;}
+  .bridge{margin-top:8px;padding:16px 16px 14px;border-radius:14px;
+    background:linear-gradient(160deg,#f7eef5,#f1ecf7);border:1px solid #ecdff0;
+    font-size:12.5px;line-height:2;color:#7c6a80;text-align:center;letter-spacing:.02em;}
+  .bridge .bridge-heart{font-size:15px;color:#c98bb0;display:block;margin-bottom:4px;}
+  .reset-line{text-align:center;margin-top:26px;}
+  .reset-line button{background:none;border:none;font-family:inherit;
+    font-size:11.5px;color:#a99cab;letter-spacing:.06em;cursor:pointer;text-decoration:underline;}
 </style>
 </head>
 <body>
 <div class="wrap">
+
+  <nav class="tab-nav">
+    <button type="button" id="tabChakra" class="tab-btn active">今日のチャクラ</button>
+    <button type="button" id="tabNami" class="tab-btn">今日の波</button>
+  </nav>
+
+  <div id="viewChakra">
 
   <header>
     <div class="lotus">❁</div>
@@ -242,6 +314,113 @@
     つらさが続くときは、お医者さんにも頼ってね。<br><br>
     © natsuko
   </footer>
+
+  </div><!-- /viewChakra -->
+
+  <div id="viewNami">
+    <header>
+      <div class="mark">〜</div>
+      <h1>今日の波</h1>
+      <p class="subtitle">なつこ式エネルギーリーディング</p>
+      <div class="today" id="todayLabelNami"></div>
+    </header>
+
+    <div id="birthView">
+      <div class="birth-card">
+        <p>あなたの生まれた日から、<br>今日のエネルギーの波を読みます。<br>生年月日を教えてね。</p>
+        <div class="birth-selects">
+          <select id="selYear" aria-label="年"></select>
+          <select id="selMonth" aria-label="月"></select>
+          <select id="selDay" aria-label="日"></select>
+        </div>
+        <button class="birth-btn" id="birthBtn" type="button">今日の波をみる</button>
+        <p class="birth-note">生年月日はあなたのスマホの中にだけ残ります。<br>どこにも送信されないから、安心してね。</p>
+      </div>
+    </div>
+
+    <div id="mainView">
+      <p class="sign-line" id="signLine"></p>
+
+      <section>
+        <div class="num-card">
+          <p class="num-label">今日のあなたの数字</p>
+          <p class="num-big" id="pdNum">-</p>
+          <p class="num-keyword" id="pdKeyword"></p>
+          <div class="wave-box">
+            <svg id="waveSvg" viewBox="0 0 320 110" aria-label="あなたのエネルギーの波"></svg>
+            <p class="wave-caption" id="waveCaption"></p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec-title">今日の空模様</h2>
+        <div class="sky-grid">
+          <div class="sky-card">
+            <div class="sky-icon" id="moonIcon"></div>
+            <p class="sky-name" id="moonName"></p>
+            <p class="sky-text" id="moonText"></p>
+          </div>
+          <div class="sky-card">
+            <div class="sky-icon" id="planetIcon"></div>
+            <p class="sky-name" id="planetName"></p>
+            <p class="sky-text" id="planetText"></p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec-title">今日のあなたへ</h2>
+        <div class="msg-card">
+          <p class="msg-body" id="mainMsg"></p>
+        </div>
+        <div class="msg-card">
+          <p class="msg-head">今日はこう構えるとラク</p>
+          <p class="msg-body" id="allowMsg"></p>
+        </div>
+        <div class="msg-card">
+          <p class="msg-head">そっと挑戦してみること</p>
+          <p class="msg-body" id="tryMsg"></p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec-title">今日整えたいチャクラ</h2>
+        <div class="chakra-card">
+          <div class="chakra-head" id="chHead">
+            <p class="ch-label" id="chLabel">今日の波とつながっているのは</p>
+            <h3 id="chName"></h3>
+            <p class="ch-kw" id="chKw"></p>
+          </div>
+          <div class="chakra-body">
+            <div class="care-grid" id="chCare"></div>
+            <a class="chakra-link" id="namiToChakra" href="#">チャクラをもっと知りたい日は「今日のチャクラ」へ →</a>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="bridge">
+          <span class="bridge-heart">♡</span>
+          今日の波が、少し心に触れたなら。<br>
+          よかったら、今日のあなたの数字を、<br>トークでそっと教えてね。<br>
+          あなたのことを、もっと知れたら うれしいな。
+        </div>
+      </section>
+
+      <div class="reset-line">
+        <button type="button" id="resetBirth">生年月日をなおす</button>
+      </div>
+    </div>
+
+    <footer>
+      このリーディングは、毎日をやさしく過ごすための参考として楽しんでね。<br>
+      未来を決めつけるものではないよ。<br>
+      つらさが続くときは、お医者さんにも頼ってね。<br><br>
+      © natsuko
+    </footer>
+  </div><!-- /viewNami -->
+
 </div>
 
 <script>
@@ -646,6 +825,354 @@ const saved = localStorage.getItem(MY_KEY);
 if(saved !== null && CHAKRAS[+saved]){
   selectChakra(+saved, false);
 }
+</script>
+
+<script>
+(function(){
+  /* ===== タブ切り替え ===== */
+  const viewChakra = document.getElementById("viewChakra");
+  const viewNami = document.getElementById("viewNami");
+  const tabChakra = document.getElementById("tabChakra");
+  const tabNami = document.getElementById("tabNami");
+  const VIEW_KEY = "natsuko_last_view";
+  function showView(which){
+    const nami = which === "nami";
+    viewChakra.style.display = nami ? "none" : "block";
+    viewNami.style.display = nami ? "block" : "none";
+    tabChakra.classList.toggle("active", !nami);
+    tabNami.classList.toggle("active", nami);
+    localStorage.setItem(VIEW_KEY, which);
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+  tabChakra.addEventListener("click", ()=>showView("chakra"));
+  tabNami.addEventListener("click", ()=>showView("nami"));
+
+  /* ===== 今日の波（なつこ式：数秘×月×曜日の星×チャクラ） ===== */
+  const PD_DATA = {
+    1:{ keyword:"はじまりの日", wave:"芽吹き",
+      msgs:[
+        "今日は、あたらしい風が入ってくる日。大きなことじゃなくていいの。「ちょっとやってみようかな」の気持ちが、もう始まりだよ。",
+        "まっさらなページが開く日。昨日までのことは、いったん横に置いて大丈夫。今日のあなたから始めていいんだよ。",
+        "小さな「はじめて」と相性がいい日。新しい道で帰る、新しいお茶をいれる。それだけで波に乗れるよ。"],
+      allows:[
+        "そわそわしたら、それは動き出したいエネルギーのサイン。落ち着かない自分を責めなくて大丈夫。",
+        "うまく始められなくても大丈夫。「始めたい」と思えたこと自体が、今日の花マルだよ。"],
+      tries:[
+        "気になっていたことに、5分だけ触れてみる。",
+        "「いつかやりたい」を、ひとつだけ紙に書いてみる。"] },
+    2:{ keyword:"よりそいの日", wave:"ゆっくり育つ",
+      msgs:[
+        "今日は、急がずゆっくりの日。自分の気持ちにも、人の気持ちにも、そっと耳をすませてみてね。",
+        "ふたつの気持ちの間で揺れても大丈夫。揺れるのは、ちゃんと感じている証拠だよ。",
+        "今日は「待つ」が上手にできる日。芽が出るまでの時間も、大切な育ちの時間だからね。"],
+      allows:[
+        "決められない日があってもいいの。今日は「決めない」を選んでいい日だよ。",
+        "人に気をつかって疲れたら、そっと離れて深呼吸。やさしいあなたのままで大丈夫。"],
+      tries:[
+        "大切な人に、短い「ありがとう」を送ってみる。",
+        "自分の気持ちを、ひとことだけ日記に書いてみる。"] },
+    3:{ keyword:"はなひらく日", wave:"ひろがり",
+      msgs:[
+        "今日は、心が軽くなることをしていい日。楽しむことは、さぼることじゃないからね。",
+        "あなたの中の子どもが、遊びたがっている日。ちょっとした寄り道が、いい風を運んでくるよ。",
+        "言葉やアイデアがふくらみやすい日。思いついたことは、忘れないうちにメモしてあげてね。"],
+      allows:[
+        "ふざけたくなったら、それは元気が戻ってきたサイン。まじめじゃない時間も大切にね。",
+        "集中できない日は、散らかる日じゃなくて、ひろがる日。そのままでいいよ。"],
+      tries:[
+        "好きな音楽を1曲、ちゃんと最後まで聴いてみる。",
+        "くすっと笑えるものに、ひとつ触れてみる。"] },
+    4:{ keyword:"ととのえの日", wave:"積みかさね",
+      msgs:[
+        "今日は、コツコツが気持ちいい日。ひとつずつ片づくたびに、心の中も整っていくよ。",
+        "派手さはないけれど、土台が育つ大事な日。今日の小さな積み重ねが、未来のあなたを支えるよ。",
+        "暮らしの足元を見てあげる日。引き出しひとつ、カバンの中ひとつで十分だよ。"],
+      allows:[
+        "思うように進まなくても大丈夫。ゆっくりは、ていねいの証だからね。",
+        "「ちゃんとしなきゃ」が強くなったら、少し肩の力を抜いて。7割できたら上出来だよ。"],
+      tries:[
+        "机の上か、スマホの写真を、5分だけ整えてみる。",
+        "今日やることを3つだけ選んで、あとは手放してみる。"] },
+    5:{ keyword:"かぜの日", wave:"波のいただき",
+      msgs:[
+        "今日は、風がよく通る日。いつもと違う選択が、思いがけない扉を開けてくれるかも。",
+        "変化は、少しこわく感じるかもしれないね。でも風は、新しい空気を運んできてくれるもの。流れに身をあずけてみてね。",
+        "好奇心がアンテナになる日。「なんか気になる」は、今日のあなたの羅針盤だよ。"],
+      allows:[
+        "落ち着かない日は、あなたが変わりはじめている日。そわそわも、旅の合図だよ。",
+        "予定が崩れても大丈夫。今日は「予定通りじゃない」が正解の日もあるの。"],
+      tries:[
+        "いつもと違う道、違う飲み物、どれかひとつ試してみる。",
+        "ずっと迷っていたことを、誰かにひとこと話してみる。"] },
+    6:{ keyword:"いつくしみの日", wave:"あたたかな凪",
+      msgs:[
+        "今日は、愛が行き来しやすい日。大切な人にも、自分にも、同じだけやさしくね。",
+        "誰かの役に立ちたくなる日。でもその前に、自分のコップを満たすのを忘れないでね。",
+        "「ちょうどいい距離」を見つける日。近すぎず遠すぎず、心地いいところにいていいんだよ。"],
+      allows:[
+        "頼まれごとを断っても、あなたの優しさは減らないよ。今日は「わたしの番」でいいの。",
+        "身近な人にイラッとしたら、それだけ近くで頑張ってる証拠。責めなくて大丈夫。"],
+      tries:[
+        "自分に小さなごほうびを、ひとつ用意してみる。",
+        "身近な人のいいところを、心の中でひとつ見つけてみる。"] },
+    7:{ keyword:"しずけさの日", wave:"深まり",
+      msgs:[
+        "今日は、内側の声がよく聞こえる日。予定を詰めすぎず、静かな時間をひとさじ入れてね。",
+        "ひとりの時間が薬になる日。さみしさじゃなくて、深まりの時間だよ。",
+        "答えを外に探さなくていい日。今日のあなたの中に、もうヒントはあるからね。"],
+      allows:[
+        "人に会いたくない日があってもいい。今日は充電の日と決めていいんだよ。",
+        "考えごとが深くなるのは、心が育っているから。暗いんじゃなくて、深いの。"],
+      tries:[
+        "寝る前に3分だけ、スマホを置いて目を閉じてみる。",
+        "今日感じたことを、ひとりごとみたいに書き出してみる。"] },
+    8:{ keyword:"みのりの日", wave:"ふたつめの山",
+      msgs:[
+        "今日は、受け取る日。がんばってきたことの実りが、思わぬ形で届くかも。ちゃんと受け取ってね。",
+        "力が乗りやすい日。もし大事な連絡や決めたいことがあるなら、今日の追い風に乗せてみてもいいかも。",
+        "豊かさのアンテナが立つ日。お金も愛も「受け取っていい」と自分に許可を出してあげてね。"],
+      allows:[
+        "ほめられたら「そんなことない」じゃなくて「ありがとう」でいいんだよ。",
+        "望みが大きくなって、少しこわくなったら。それは、いのちが元気に動きだしている証だよ。"],
+      tries:[
+        "うれしかったことを、ひとつ声に出して認めてみる。",
+        "後回しにしていた大事な連絡を、ひとつだけ送ってみる。"] },
+    9:{ keyword:"手ばなしの日", wave:"引き潮",
+      msgs:[
+        "今日は、波がいったん引いていく日。手放すことは失うことじゃなくて、次の満ち潮の準備だよ。",
+        "ひと区切りの日。終わっていくものに「ありがとう」を言えたら、それで十分。",
+        "疲れが出やすい日でもあるの。今日は自分を休ませることが、いちばんの仕事だよ。"],
+      allows:[
+        "やる気が出ない日じゃなくて、手放しの日。動けない自分に、OKを出してあげてね。",
+        "涙が出そうなら、出していい日。流すことも、立派な浄化だからね。"],
+      tries:[
+        "使っていないものを、ひとつだけ「ありがとう」と手放してみる。",
+        "今日は10分早く、おふとんに入ってみる。"] }
+  };
+  const WAVE_HEIGHTS = [30, 42, 58, 66, 78, 62, 45, 82, 22];
+  const MOON_DATA = [
+    { icon:"🌑", name:"新月", text:"はじまりの種をまく頃。願いごとを心の中でひとつだけ。" },
+    { icon:"🌒", name:"三日月", text:"芽が出はじめる頃。小さな一歩を、そっと後押ししてくれるよ。" },
+    { icon:"🌓", name:"上弦の月", text:"迷いも出るけれど、決める力もくれる月。半分で大丈夫。" },
+    { icon:"🌔", name:"満ちゆく月", text:"満ちていく途中。焦らなくても、ちゃんと育っているよ。" },
+    { icon:"🌕", name:"満月", text:"受け取りの満月。実りも感情も、あふれやすい頃だよ。" },
+    { icon:"🌖", name:"欠けゆく月", text:"少しずつ、ゆるめていく頃。振り返りに向いているよ。" },
+    { icon:"🌗", name:"下弦の月", text:"手放し上手になれる月。半分になっても、ちゃんと美しいの。" },
+    { icon:"🌘", name:"しずまりの月", text:"次の新月への準備期間。休むことが、いちばんの前進だよ。" }
+  ];
+  const PLANET_DATA = [
+    { icon:"☀️", name:"太陽の日曜日", text:"あなたらしさが輝く日。主役はあなたでいいんだよ。" },
+    { icon:"🌙", name:"月の月曜日", text:"心の潮が動く日。感情のゆれは、月のせいにしていいからね。" },
+    { icon:"🔥", name:"火星の火曜日", text:"情熱に火が入る日。からだを少し動かすと整うよ。" },
+    { icon:"💫", name:"水星の水曜日", text:"ことばが軽やかに走る日。伝えごと・学びごとに追い風。" },
+    { icon:"🍀", name:"木星の木曜日", text:"ひろがりの日。ちょっと大きめの夢を見ていい日だよ。" },
+    { icon:"💗", name:"金星の金曜日", text:"心地よさを選ぶ日。きれいなもの、おいしいものを自分に。" },
+    { icon:"🪐", name:"土星の土曜日", text:"じっくり腰をすえる日。コツコツが報われやすいよ。" }
+  ];
+  const NAMI_CHAKRAS = [
+    { name:"第1チャクラ ルートチャクラ", kw:"安心 ・ 土台 ・ 生きる力", color:"#c9524a", light:"#e08a83",
+      care:{ food:"ゴボウやニンジンなどの根菜、トマトや赤いりんご。土の恵みをゆっくり味わって",
+        stone:"ルビー、ヘマタイト、タイガーアイなど赤や茶色の石",
+        aroma:"シダーウッド、パチュリ、ベチバー。深く重い香りが土台を支えてくれる",
+        sound:"ソルフェジオ周波数 396Hz" } },
+    { name:"第2チャクラ セイクラルチャクラ", kw:"よろこび ・ 感情 ・ 創造", color:"#e08e3c", light:"#f0b06a",
+      care:{ food:"オレンジやマンゴーなどのフルーツ。みずみずしさが心をゆるめてくれる",
+        stone:"カーネリアン、シトリン、ムーンストーンなどオレンジ系の石",
+        aroma:"ジャスミン、イランイラン。よろこびの感覚を思い出させてくれる香り",
+        sound:"ソルフェジオ周波数 417Hz" } },
+    { name:"第3チャクラ ソーラープレクサスチャクラ", kw:"自信 ・ 意志 ・ 勇気", color:"#e3b93a", light:"#f2d372",
+      care:{ food:"レモンやグレープフルーツ、バナナなど黄色い食材。消化にもやさしく",
+        stone:"イエローオパール、サンストーン。太陽の力を貸してくれる石",
+        aroma:"ジュニパー、グレープフルーツ。気持ちをすっきり軽くしてくれる香り",
+        sound:"ソルフェジオ周波数 528Hz" } },
+    { name:"第4チャクラ ハートチャクラ", kw:"愛 ・ つながり ・ ゆるし", color:"#5aa86e", light:"#8cc79a",
+      care:{ food:"ブロッコリーやほうれん草など緑の野菜。心とからだを整えてくれる",
+        stone:"ローズクォーツ、エメラルド、ヒスイ。愛と癒しの石",
+        aroma:"ローズ、ベルガモット。心をまるごとあたたかく包んでくれる香り",
+        sound:"ソルフェジオ周波数 639Hz" } },
+    { name:"第5チャクラ スロートチャクラ", kw:"表現 ・ ことば ・ 正直", color:"#4f9bc4", light:"#85bedd",
+      care:{ food:"海藻や青魚、あたたかいハーブティー。ことばの通り道をうるおして",
+        stone:"アクアマリン、ソーダライト、ターコイズなど青い石",
+        aroma:"カモミール、ペパーミント。のどと心をすっと軽くしてくれる香り",
+        sound:"ソルフェジオ周波数 741Hz" } },
+    { name:"第6チャクラ サードアイチャクラ", kw:"直感 ・ ビジョン ・ 知恵", color:"#4a5a9e", light:"#7d8ac2",
+      care:{ food:"ブルーベリーやプルーンなど濃い青の食べもの。新鮮なお水も忘れずに",
+        stone:"ラピスラズリ、アメジスト、カイヤナイトなど藍色の石",
+        aroma:"ローズマリー、ジュニパー。頭をクリアにしてくれる香り",
+        sound:"ソルフェジオ周波数 852Hz" } },
+    { name:"第7チャクラ クラウンチャクラ", kw:"霊性 ・ ゆだねる ・ 大いなる流れ", color:"#8d5fb0", light:"#b48fce",
+      care:{ food:"白湯やデトックスティーで、からだの中を軽やかに。食べすぎない日もいいね",
+        stone:"アメジスト、水晶。心とからだの調和をもたらす石",
+        aroma:"フランキンセンス、ラベンダー。祈りの時間に寄り添う神聖な香り",
+        sound:"ソルフェジオ周波数 963Hz" } },
+    { name:"第8チャクラ ソウルスターチャクラ", kw:"魂 ・ 宇宙とのつながり ・ 手放し", color:"#9a90a8", light:"#c3bccd",
+      care:{ food:"自然の恵みをそのままに。無農薬の野菜や、新鮮な空気を胸いっぱいに",
+        stone:"クリアクォーツ、ラブラドライト、グレームーンストーン",
+        aroma:"ローズウッド、シダーウッド、ネロリ。8つのチャクラを統合してくれる香り",
+        sound:"ソルフェジオ周波数 174Hz" } }
+  ];
+  function chakraIndexForDay(pd){ return pd <= 8 ? pd - 1 : 7; }
+  const SIGNS = [
+    ["やぎ座",1,19],["みずがめ座",2,18],["うお座",3,20],["おひつじ座",4,19],
+    ["おうし座",5,20],["ふたご座",6,21],["かに座",7,22],["しし座",8,22],
+    ["おとめ座",9,22],["てんびん座",10,23],["さそり座",11,22],["いて座",12,21],["やぎ座",12,31]
+  ];
+  function sunSign(m,d){
+    for(const [name,sm,sd] of SIGNS){
+      if(m < sm || (m === sm && d <= sd)) return name;
+    }
+    return "やぎ座";
+  }
+  function digitReduce(n){
+    n = Math.abs(n);
+    while(n > 9){
+      let s = 0;
+      while(n > 0){ s += n % 10; n = Math.floor(n / 10); }
+      n = s;
+    }
+    return n === 0 ? 9 : n;
+  }
+  function personalDay(bm, bd, date){
+    const py = digitReduce(digitReduce(bm) + digitReduce(bd) + digitReduce(date.getFullYear()));
+    const pm = digitReduce(py + digitReduce(date.getMonth()+1));
+    return digitReduce(pm + digitReduce(date.getDate()));
+  }
+  function moonPhaseIndex(date){
+    const synodic = 29.53058867;
+    const knownNewMoon = Date.UTC(2000, 0, 6, 18, 14, 0);
+    const days = (date.getTime() - knownNewMoon) / 86400000;
+    const age = ((days % synodic) + synodic) % synodic;
+    return Math.floor(((age + synodic/16) / synodic) * 8) % 8;
+  }
+
+  const BIRTH_KEY = "natsuko_nami_birth";
+  const nowN = new Date();
+  const WEEKN = ["日","月","火","水","木","金","土"];
+  document.getElementById("todayLabelNami").textContent =
+    `${nowN.getFullYear()}年${nowN.getMonth()+1}月${nowN.getDate()}日（${WEEKN[nowN.getDay()]}）`;
+  const dayOfYearN = Math.floor((nowN - new Date(nowN.getFullYear(),0,0)) / 86400000);
+
+  const selYear = document.getElementById("selYear");
+  const selMonth = document.getElementById("selMonth");
+  const selDay = document.getElementById("selDay");
+  for(let y = nowN.getFullYear(); y >= 1930; y--){
+    selYear.insertAdjacentHTML("beforeend", `<option value="${y}">${y}年</option>`);
+  }
+  for(let m = 1; m <= 12; m++){
+    selMonth.insertAdjacentHTML("beforeend", `<option value="${m}">${m}月</option>`);
+  }
+  function fillDays(){
+    const y = +selYear.value || 2000, m = +selMonth.value || 1;
+    const max = new Date(y, m, 0).getDate();
+    const cur = +selDay.value || 1;
+    selDay.innerHTML = "";
+    for(let d = 1; d <= max; d++){
+      selDay.insertAdjacentHTML("beforeend", `<option value="${d}">${d}日</option>`);
+    }
+    selDay.value = Math.min(cur, max);
+  }
+  selYear.addEventListener("change", fillDays);
+  selMonth.addEventListener("change", fillDays);
+  selYear.value = "1985";
+  fillDays();
+
+  document.getElementById("birthBtn").addEventListener("click", ()=>{
+    const birth = { y:+selYear.value, m:+selMonth.value, d:+selDay.value };
+    localStorage.setItem(BIRTH_KEY, JSON.stringify(birth));
+    render(birth);
+  });
+  document.getElementById("resetBirth").addEventListener("click", ()=>{
+    localStorage.removeItem(BIRTH_KEY);
+    document.getElementById("mainView").style.display = "none";
+    document.getElementById("birthView").style.display = "block";
+    window.scrollTo({top:0, behavior:"smooth"});
+  });
+
+  function drawWave(pd){
+    const svg = document.getElementById("waveSvg");
+    const pts = WAVE_HEIGHTS.map((h,i)=>({ x: 24 + i * 34, y: 92 - h * 0.62 }));
+    let path = `M ${pts[0].x} ${pts[0].y}`;
+    for(let i = 1; i < pts.length; i++){
+      const p0 = pts[i-1], p1 = pts[i];
+      const cx = (p0.x + p1.x) / 2;
+      path += ` C ${cx} ${p0.y}, ${cx} ${p1.y}, ${p1.x} ${p1.y}`;
+    }
+    let els = `<path d="${path}" fill="none" stroke="#c9b6d3" stroke-width="2.5" stroke-linecap="round"/>`;
+    pts.forEach((p,i)=>{
+      if(i === pd - 1){
+        els += `<circle cx="${p.x}" cy="${p.y}" r="8" fill="#8d5fb0" opacity=".25"/>`;
+        els += `<circle cx="${p.x}" cy="${p.y}" r="4.5" fill="#8d5fb0"/>`;
+        els += `<text x="${p.x}" y="${p.y - 13}" text-anchor="middle" font-size="11" fill="#7c6a80">きょう</text>`;
+      }else{
+        els += `<circle cx="${p.x}" cy="${p.y}" r="2.5" fill="#d8c8de"/>`;
+      }
+      els += `<text x="${p.x}" y="106" text-anchor="middle" font-size="9" fill="#a99cab">${i+1}</text>`;
+    });
+    svg.innerHTML = els;
+  }
+
+  function render(birth){
+    document.getElementById("birthView").style.display = "none";
+    document.getElementById("mainView").style.display = "block";
+
+    const sign = sunSign(birth.m, birth.d);
+    document.getElementById("signLine").textContent = `${sign}のあなたの、今日の波`;
+
+    const pd = personalDay(birth.m, birth.d, nowN);
+    const data = PD_DATA[pd];
+    document.getElementById("pdNum").textContent = pd;
+    document.getElementById("pdKeyword").textContent = data.keyword;
+    drawWave(pd);
+    document.getElementById("waveCaption").textContent =
+      `9日でめぐる、あなたのリズム。今日は ${pd}日目「${data.wave}」のあたりにいるよ`;
+
+    const moon = MOON_DATA[moonPhaseIndex(nowN)];
+    document.getElementById("moonIcon").textContent = moon.icon;
+    document.getElementById("moonName").textContent = moon.name;
+    document.getElementById("moonText").textContent = moon.text;
+
+    const planet = PLANET_DATA[nowN.getDay()];
+    document.getElementById("planetIcon").textContent = planet.icon;
+    document.getElementById("planetName").textContent = planet.name;
+    document.getElementById("planetText").textContent = planet.text;
+
+    document.getElementById("mainMsg").textContent = data.msgs[(dayOfYearN + pd) % data.msgs.length];
+    document.getElementById("allowMsg").textContent = data.allows[dayOfYearN % data.allows.length];
+    document.getElementById("tryMsg").textContent = data.tries[(dayOfYearN + 1) % data.tries.length];
+
+    const ci = chakraIndexForDay(pd);
+    const ch = NAMI_CHAKRAS[ci];
+    document.getElementById("chLabel").textContent =
+      pd === 9 ? "手放しの日に寄りそってくれるのは" : "今日の波とつながっているのは";
+    document.getElementById("chHead").style.background =
+      `linear-gradient(150deg, ${ch.light} 0%, ${ch.color} 100%)`;
+    document.getElementById("chName").textContent = ch.name;
+    document.getElementById("chKw").textContent = ch.kw;
+    document.getElementById("chCare").innerHTML = `
+      <div class="care"><b>たべもの</b><span>${ch.care.food}</span></div>
+      <div class="care"><b>パワーストーン</b><span>${ch.care.stone}</span></div>
+      <div class="care"><b>アロマ</b><span>${ch.care.aroma}</span></div>
+      <div class="care"><b>おと</b><span>${ch.care.sound}</span></div>`;
+  }
+
+  const savedBirth = localStorage.getItem(BIRTH_KEY);
+  if(savedBirth){
+    try{ render(JSON.parse(savedBirth)); }
+    catch(e){
+      localStorage.removeItem(BIRTH_KEY);
+      document.getElementById("birthView").style.display = "block";
+    }
+  }else{
+    document.getElementById("birthView").style.display = "block";
+  }
+
+  /* 波の画面から「今日のチャクラ」タブへ */
+  const namiToChakra = document.getElementById("namiToChakra");
+  if(namiToChakra) namiToChakra.addEventListener("click", (e)=>{ e.preventDefault(); showView("chakra"); });
+
+  /* 初期表示：前回ひらいていたタブを覚えておく */
+  showView(localStorage.getItem(VIEW_KEY) === "nami" ? "nami" : "chakra");
+})();
 </script>
 </body>
 </html>
