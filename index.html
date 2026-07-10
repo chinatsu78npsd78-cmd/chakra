@@ -201,6 +201,26 @@
     background:linear-gradient(160deg,#f7eef5,#f1ecf7);border:1px solid #ecdff0;
     font-size:12.5px;line-height:2;color:#7c6a80;text-align:center;letter-spacing:.02em;}
   .bridge .bridge-heart{font-size:15px;color:#c98bb0;display:block;margin-bottom:4px;}
+
+  /* ---- 自分への矢印ノート ---- */
+  .note-card{background:var(--card);border:1px solid #eee2ea;border-radius:20px;
+    padding:20px 18px;box-shadow:0 2px 10px rgba(120,90,130,.06);}
+  .note-lead{font-size:12.5px;color:#6d5f70;line-height:2;margin-bottom:14px;text-align:center;}
+  .note-field{display:block;margin-bottom:12px;}
+  .note-field b{display:block;font-size:12px;color:#a084a8;letter-spacing:.1em;margin-bottom:4px;font-weight:600;}
+  .note-field textarea{width:100%;font-family:inherit;font-size:13.5px;color:var(--ink);
+    background:#faf6f2;border:1px solid #e6dbe8;border-radius:12px;padding:10px 12px;
+    line-height:1.8;resize:vertical;}
+  .note-field textarea::placeholder{color:#b9adbb;font-size:12px;}
+  #noteResult{display:none;}
+  .note-res-label{font-size:12px;letter-spacing:.14em;color:#a084a8;text-align:center;margin-bottom:12px;}
+  .note-echo-row{background:#faf6f2;border-radius:12px;padding:10px 12px;margin-bottom:8px;font-size:13px;line-height:1.9;}
+  .note-echo-row b{color:#a084a8;font-size:11.5px;letter-spacing:.08em;margin-right:8px;font-weight:600;}
+  .note-echo-row span{color:var(--ink);white-space:pre-wrap;}
+  .note-arrow-msg{font-size:13.5px;line-height:2.1;background:linear-gradient(160deg,#f7eef5,#f1ecf7);
+    border-radius:12px;padding:14px 14px;margin-top:12px;}
+  .note-practice{font-size:12px;color:#7c6a80;line-height:2;margin-top:12px;text-align:center;}
+  .note-privacy{font-size:11px;color:#a99cab;text-align:center;margin-top:10px;letter-spacing:.04em;}
   .reset-line{text-align:center;margin-top:26px;}
   .reset-line button{background:none;border:none;font-family:inherit;
     font-size:11.5px;color:#a99cab;letter-spacing:.06em;cursor:pointer;text-decoration:underline;}
@@ -397,6 +417,31 @@
             <a class="chakra-link" id="namiToChakra" href="#">チャクラをもっと知りたい日は「今日のチャクラ」へ →</a>
           </div>
         </div>
+      </section>
+
+      <section>
+        <h2 class="sec-title">今日の自分に、矢印を向ける</h2>
+        <div class="note-card" id="noteInput">
+          <p class="note-lead">今日の波を知ったら、最後はあなた自身へ。<br>いまの こころ・あたま・からだ にあるものを、<br>そのまま置いていってね。<br>正しい言葉じゃなくて大丈夫だよ。</p>
+          <label class="note-field"><b>こころ（いまの気持ち）</b>
+            <textarea id="noteKokoro" rows="2" placeholder="例：なんだかそわそわ。少しうれしい気もする"></textarea></label>
+          <label class="note-field"><b>あたま（考えていること）</b>
+            <textarea id="noteAtama" rows="2" placeholder="例：明日の予定のことが、ぐるぐるしてる"></textarea></label>
+          <label class="note-field"><b>からだ（感じていること）</b>
+            <textarea id="noteKarada" rows="2" placeholder="例：肩が重たい。目がつかれてる"></textarea></label>
+          <button class="birth-btn" id="noteBtn" type="button">今日の矢印をつくる</button>
+          <p class="note-privacy" id="noteHint">ぜんぶ書かなくても、ひとことだけでも大丈夫</p>
+        </div>
+        <div id="noteResult">
+          <div class="note-card">
+            <p class="note-res-label">今日、矢印を向けてあげたいあなた</p>
+            <div id="noteEcho"></div>
+            <p class="note-arrow-msg" id="noteArrowMsg"></p>
+            <p class="note-practice">今日の合図：ふと思い出したら、深呼吸をひとつして、胸に手を当てる。<br>それが「自分に矢印を向ける」合図だよ。</p>
+            <button class="dr-jump" id="noteEditBtn" type="button">書きなおす</button>
+          </div>
+        </div>
+        <p class="note-privacy">書いたことはあなたのスマホの中にだけ残るよ。どこにも送信されないからね。</p>
       </section>
 
       <section>
@@ -1172,6 +1217,82 @@ if(saved !== null && CHAKRAS[+saved]){
 
   /* 初期表示：前回ひらいていたタブを覚えておく */
   showView(localStorage.getItem(VIEW_KEY) === "nami" ? "nami" : "chakra");
+})();
+
+/* ===== 自分への矢印ノート（今日の波タブ内・スマホ内だけに保存） ===== */
+(function(){
+  const NOTE_KEY = "natsuko_nami_note";
+  const now = new Date();
+  const todayStr = `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}`;
+  const dayOfYear = Math.floor((now - new Date(now.getFullYear(),0,0)) / 86400000);
+
+  const ARROW_MSGS = [
+    "書いてくれてありがとう。今日はふと思い出したときに、ここに戻ってきて「そう感じてるんだね」って自分に言ってあげてね。それだけで、矢印はちゃんとあなたに向くよ。",
+    "感じていることに気づけた時点で、もう半分ケアできているの。今日は答えを出そうとしなくて大丈夫。ただ「いるね」って、認めてあげてね。",
+    "どんな気持ちも、あなたの中の小さなあなたからのお手紙。今日はその子のとなりに、そっと座っていてあげてね。"
+  ];
+  const FIELDS = [
+    { id:"noteKokoro", label:"こころ" },
+    { id:"noteAtama",  label:"あたま" },
+    { id:"noteKarada", label:"からだ" }
+  ];
+
+  const inputEl = document.getElementById("noteInput");
+  const resultEl = document.getElementById("noteResult");
+  const hintEl = document.getElementById("noteHint");
+  if(!inputEl) return;
+
+  function showResult(data){
+    const echo = document.getElementById("noteEcho");
+    echo.innerHTML = "";
+    FIELDS.forEach(f=>{
+      const v = (data[f.id] || "").trim();
+      if(!v) return;
+      const row = document.createElement("div");
+      row.className = "note-echo-row";
+      const b = document.createElement("b");
+      b.textContent = f.label;
+      const span = document.createElement("span");
+      span.textContent = v;
+      row.appendChild(b); row.appendChild(span);
+      echo.appendChild(row);
+    });
+    document.getElementById("noteArrowMsg").textContent = ARROW_MSGS[dayOfYear % ARROW_MSGS.length];
+    inputEl.style.display = "none";
+    resultEl.style.display = "block";
+  }
+
+  document.getElementById("noteBtn").addEventListener("click", ()=>{
+    const data = { date: todayStr };
+    let hasAny = false;
+    FIELDS.forEach(f=>{
+      const v = document.getElementById(f.id).value.trim();
+      data[f.id] = v;
+      if(v) hasAny = true;
+    });
+    if(!hasAny){
+      hintEl.textContent = "ひとことだけでも大丈夫。どれかひとつ、いまのあなたを置いていってね";
+      return;
+    }
+    hintEl.textContent = "ぜんぶ書かなくても、ひとことだけでも大丈夫";
+    localStorage.setItem(NOTE_KEY, JSON.stringify(data));
+    showResult(data);
+  });
+
+  document.getElementById("noteEditBtn").addEventListener("click", ()=>{
+    try{
+      const data = JSON.parse(localStorage.getItem(NOTE_KEY) || "{}");
+      FIELDS.forEach(f=>{ document.getElementById(f.id).value = data[f.id] || ""; });
+    }catch(e){}
+    resultEl.style.display = "none";
+    inputEl.style.display = "block";
+  });
+
+  /* きょう書いたものがあれば、開いたときにそのまま見せる */
+  try{
+    const saved = JSON.parse(localStorage.getItem(NOTE_KEY) || "null");
+    if(saved && saved.date === todayStr) showResult(saved);
+  }catch(e){ localStorage.removeItem(NOTE_KEY); }
 })();
 </script>
 </body>
