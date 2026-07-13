@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7f4">
+  <meta name="description" content="顔の部位から臓器反射区、筋肉、左右差、チャクラのテーマを確認できるsalon用ホリスティックフェイシャル顔マップ。">
+  <title>ホリスティックフェイシャル 顔マップ</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">HOLISTIC FACIAL</p>
+      <h1>顔マップ</h1>
+      <p class="header-note">salonの対話の地図</p>
+    </div>
+    <div class="search" role="search">
+      <label class="sr-only" for="zoneSearch">顔の部位や臓器を検索</label>
+      <input id="zoneSearch" type="search" inputmode="search" autocomplete="off" placeholder="部位・臓器・チャクラを検索">
+      <button id="clearSearch" class="clear-search" type="button" title="検索を消す" aria-label="検索を消す">×</button>
+    </div>
+  </header>
+
+  <nav class="mode-tabs" aria-label="顔マップの表示">
+    <button type="button" class="mode-tab is-active" data-mode="organs" aria-pressed="true">反射区</button>
+    <button type="button" class="mode-tab" data-mode="muscles" aria-pressed="false">筋肉</button>
+    <button type="button" class="mode-tab" data-mode="sides" aria-pressed="false">左右差</button>
+    <button type="button" class="mode-tab" data-mode="chakras" aria-pressed="false">チャクラ</button>
+  </nav>
+
+  <main class="workspace">
+    <section class="map-pane" aria-labelledby="mapTitle">
+      <div class="pane-heading">
+        <div>
+          <p class="section-label">FACE ZONES</p>
+          <h2 id="mapTitle">顔の部位</h2>
+        </div>
+        <p id="selectionLabel" class="selection-label" aria-live="polite">額中央</p>
+      </div>
+
+      <div id="faceStage" class="face-stage" data-mode="organs">
+        <img src="./assets/face-base.png" alt="正面を向いた顔のイラスト">
+        <span class="side-marker side-marker-right">本人の右</span>
+        <span class="side-marker side-marker-left">本人の左</span>
+        <div id="faceOverlay" class="face-overlay" aria-label="顔の反射区"></div>
+      </div>
+
+      <div id="mapLegend" class="map-legend" aria-live="polite"></div>
+
+      <div class="zone-index">
+        <h3>部位一覧</h3>
+        <div id="zoneChips" class="zone-chips"></div>
+        <p id="noResults" class="no-results" hidden>一致する部位がありません</p>
+      </div>
+    </section>
+
+    <aside class="detail-pane" aria-labelledby="detailTitle">
+      <div class="detail-heading">
+        <div>
+          <p id="detailKicker" class="section-label">額</p>
+          <h2 id="detailTitle">額中央</h2>
+        </div>
+        <span id="sideBadge" class="side-badge">中央</span>
+      </div>
+
+      <div id="primaryReading" class="primary-reading"></div>
+
+      <section class="detail-section" aria-labelledby="organsTitle">
+        <h3 id="organsTitle">反射区として見るもの</h3>
+        <div id="organTags" class="tag-list"></div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="bodyTitle">
+        <h3 id="bodyTitle">身体・暮らしの方向</h3>
+        <p id="bodyReading"></p>
+      </section>
+
+      <section class="detail-section" aria-labelledby="muscleTitle">
+        <h3 id="muscleTitle">筋肉の硬さから</h3>
+        <p id="muscleName" class="detail-meta"></p>
+        <p id="muscleReading"></p>
+      </section>
+
+      <section class="detail-section" aria-labelledby="energyTitle">
+        <h3 id="energyTitle">エネルギー・感情</h3>
+        <p id="energyReading"></p>
+      </section>
+
+      <section class="detail-section" aria-labelledby="sideTitle">
+        <h3 id="sideTitle">左右を重ねる</h3>
+        <p id="sideKeywords" class="detail-meta"></p>
+        <p id="sideReading"></p>
+      </section>
+
+      <section class="detail-section" aria-labelledby="chakraTitle">
+        <h3 id="chakraTitle">関連チャクラ</h3>
+        <div id="chakraList" class="chakra-list"></div>
+      </section>
+
+      <section class="reflection" aria-labelledby="questionTitle">
+        <p class="section-label">GENTLE QUESTION</p>
+        <h3 id="questionTitle">やさしい問い</h3>
+        <p id="reflectionQuestion"></p>
+      </section>
+    </aside>
+  </main>
+
+  <footer>
+    <p>顔の反射区・左右差・チャクラは、salonで心身をやさしく振り返るための象徴的な見立てです。医学的な診断ではありません。</p>
+    <p>強い痛み、急な腫れ・変色、しびれ、顔の動かしにくさなどがある場合は、医療機関での確認を優先してください。</p>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
